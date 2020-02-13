@@ -1,0 +1,96 @@
+.ct .title{
+    color: #595959;
+    font-size: 22px;
+    margin-bottom: 35px;
+}
+
+.ct .title span{
+    color: rgb(169, 169, 169);
+    font-family: arial;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-left: 8px;
+}
+
+.ct .infos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ct .desc p{
+    font-size: 13px;
+    color: #999;
+    line-height: 35px;
+    margin-bottom: 25px;
+}
+.ct .desc{
+    /* calc 运算公式 */
+    width: calc(100% - 440px);
+}
+.ct img{
+    height: 270px;
+}
+.introduce-list{
+    padding-top: 50px;
+    display: flex;
+    justify-content:space-between;
+}
+
+.introduce-list li{
+    width: 30%;
+    height: 500px;
+    border: 1px solid gray;
+    background: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 25px;
+    border-radius: 12px;
+}
+
+.introduce-list .img{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgb(244, 133, 101);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+.introduce-list .tips{
+    color: #333;
+    font-size: 18px;
+}
+.introduce-list .tips span{
+    color: red;
+    margin-right: 12px;
+}
+.introduce-list .des{
+    font-size: 13px;
+    color: #999;
+    line-height: 30px;
+}
+
+.introduce-list .btn{
+    display: block;
+    width: 100px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid  rgb(244, 133, 101);
+    background:  rgb(244, 133, 101);
+    color: #333;
+    font-size: 14px;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.25s linear;
+}
+
+.introduce-list .btn:hover{
+    background: white;
+    color:  rgb(244, 133, 101);
+}

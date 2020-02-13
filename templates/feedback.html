@@ -1,0 +1,105 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>客户反馈</title>
+    <link rel="stylesheet" href="{% static 'css/normalized.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+</head>
+<body>
+<!-- 头部 -->
+<header id="head"
+        style="height:400px;background: url('{% static "images/feedback.jpg" %}') no-repeat left bottom; background-size: cover;">
+    <div class="wrapper">
+        <div class="top-box">
+            <!-- logo -->
+            <img class="logo" src="{% static 'images/logo.png' %}">
+            <!-- 菜单 -->
+            <ul class="menu-list">
+                <li><a href="{% url 'index' %}">首页</a></li>
+                <li><a href="{% url 'attractions' %}">热门景点</a></li>
+                <li><a href="{% url 'travelPackage' %}">旅游套餐</a></li>
+                <li><a href="{% url 'about' %}">关于我们</a></li>
+                <li class="sel"><a href="{% url 'feedback' %}">客户反馈</a></li>
+                <li><a href="{% url 'contact' %}">联系我们</a></li>
+            </ul>
+            <!-- 登录注册 -->
+            <div class="login-register-box">
+                <section class="item login">
+                    <img src="{% static 'images/login.png' %}">
+                    登陆
+                </section>
+                <section class="item register">
+                    <img src="{% static 'images/register.png' %}">
+                    注册
+                </section>
+            </div>
+        </div>
+        <div class="infos" style="margin-top:75px;">
+            <h1 style="font: lighter normal 36px '微软雅黑';">- 客户反馈 -</h1>
+            <p>Customer feedback</p>
+        </div>
+    </div>
+</header>
+<!-- 内容 -->
+<main id="content">
+    <div class="wrapper">
+        <section class="btn prev"> <</section>
+        <!-- 反馈信息 -->
+        <div class="ct-box">
+            <ul class="ct-list">
+                <!-- li的反馈信息 -->
+            </ul>
+        </div>
+        <section class="btn next"> ></section>
+    </div>
+</main>
+<!-- 尾部 -->
+<footer id="foot">
+    <section class="item contact">
+        <h1>联系我们</h1>
+        <p>/contact</p>
+    </section>
+    <section class="item service">
+        <h3>巴黎旅游定制服务</h3>
+        <ul class="info-list">
+            <li>电话：400-888-8888</li>
+            <li>手机：152-2888-5771</li>
+            <li>邮编：610000</li>
+            <li>传真：000-66668888</li>
+            <li>邮箱：lihy_online@163.com</li>
+            <li>地址：四川省成都市高新区天府软件园B区5座1层</li>
+        </ul>
+    </section>
+    <section class="item focus">
+        <h3>关注我们</h3>
+        <img src="{% static 'images/qr_code.jpg' %}">
+    </section>
+    <section class="item links">
+        <img src="{% static 'images/foot_icon_1.png' %}">
+        <img src="{% static 'images/foot_icon_2.png' %}">
+        <img src="{% static 'images/foot_icon_3.png' %}">
+        <img src="{% static 'images/foot_icon_4.png' %}">
+    </section>
+</footer>
+<aside>
+    <ul class="list">
+        <li><img src="{% static 'images/side_icon_1.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_2.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_3.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_4.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_5.png' %}"></li>
+    </ul>
+</aside>
+
+<!-- 引入脚本 -->
+<script src="{% static 'js/data.js' %}"></script>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
+<script src="{% static 'js/feedback.js' %}"></script>
+</body>
+</html>

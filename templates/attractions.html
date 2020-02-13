@@ -1,0 +1,176 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>热门景点</title>
+    <link rel="stylesheet" href="{% static 'css/normalized.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/attractions.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+
+</head>
+<body>
+<!-- 头部 -->
+<header id="head"
+        style="height:400px;background: url('{% static 'images/attractions_bg.jpg' %}') no-repeat center center; background-size: cover;">
+    <div class="wrapper">
+        <div class="top-box">
+            <!-- logo -->
+            <img class="logo" src="{% static 'images/logo.png' %}">
+            <!-- 菜单 -->
+            <ul class="menu-list">
+                <li><a href="{% url 'index' %}">首页</a></li>
+                <li class="sel"><a href="{% url 'attractions' %}">热门景点</a></li>
+                <li><a href="{% url 'travelPackage' %}">旅游套餐</a></li>
+                <li><a href="{% url 'about' %}">关于我们</a></li>
+                {#                <li><a href="{% url 'feedback' %}">客户反馈</a></li>#}
+                <li><a href="{% url 'contact' %}">联系我们</a></li>
+            </ul>
+            <!-- 登录注册 -->
+            <div class="login-register-box">
+                <section class="item login">
+                    <img src="{% static 'images/login.png' %}">
+                    登陆
+                </section>
+                <section class="item register">
+                    <img src="{% static 'images/register.png' %}">
+                    注册
+                </section>
+            </div>
+        </div>
+        <div class="infos" style="margin-top:75px;">
+            <h1 style="font: lighter normal 36px '微软雅黑';">- 巴黎旅游景点 -</h1>
+            <p>CITY TOURS / TOUR TICKETS / TOUR GUIDES</p>
+        </div>
+
+
+    </div>
+</header>
+<!-- 内容 -->
+<main id="content">
+    <!-- 标题 -->
+    <header>
+        <h1 class="title">巴黎旅游景点</h1>
+        <h3 class="sub-title">Quisque at tortor a libero posuer</h3>
+    </header>
+    <!-- 景点展示 -->
+    <div class="display">
+
+        <!-- 景点类型 -->
+        <ul class="type-list">
+
+            {% for location in all_location %}
+                <li data-type="{{ location.id }}" {% ifequal location_id location.id %}class="sel"{% endifequal %}><a
+                        href="?sel={{ location.id }}">{{ location.name }}</a></li>
+            {% endfor %}
+
+        </ul>
+
+
+        <!-- 景点列表 -->
+        <ul class="attractions-list">
+
+            {% for view in all_view.object_list %}
+
+                <li>
+                    <a href="{% url 'detail' view.id %}">
+                        <img src="{{ MEDIA_URL }}{{ view.image }}">
+                        <p class="name">{{ view.name }}</p>
+                        <p class="rating">{{ view.score }}</p>
+                    </a>
+                </li>
+
+            {% endfor %}
+
+        </ul>
+    </div>
+
+    <nav aria-label="Page navigation" id="page_nav">
+        <ul class="pagination pagination-lg">
+
+            {% if all_view.has_previous %}
+                <li>
+                    <a href="?{{ all_view.previous_page_number.querystring }}" aria-label="Previous">
+                        <span aria-hidden="true">上一页</span>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for page in all_view.pages %}
+                {% if page %}
+                    {% ifequal page page_obj.number %}
+                        <li><a href="#"><span class="current page">{{ page }}</span></a></li>
+                    {% else %}
+                        <a href="?{{ page.querystring }}" class="page">{{ page }}</a>
+                    {% endifequal %}
+                {% else %}
+                    ...
+                {% endif %}
+            {% endfor %}
+
+
+            {% if all_view.has_next %}
+                <li>
+                    <a href="?{{ all_view.next_page_number.querystring }}" aria-label="Next">
+                        <span aria-hidden="true">下一页</span>
+                    </a>
+                </li>
+            {% endif %}
+
+
+        </ul>
+    </nav>
+
+</main>
+
+
+<!-- 尾部 -->
+<footer id="foot">
+    <section class="item contact">
+        <h1>联系我们</h1>
+        <p>/contact</p>
+    </section>
+    <section class="item service">
+        <h3>巴黎旅游定制服务</h3>
+        <ul class="info-list">
+            <li>电话：400-888-8888</li>
+            <li>手机：152-2888-5771</li>
+            <li>邮编：610000</li>
+            <li>传真：000-66668888</li>
+            <li>邮箱：lihy_online@163.com</li>
+            <li>地址：四川省成都市高新区天府软件园B区5座1层</li>
+        </ul>
+    </section>
+    <section class="item focus">
+        <h3>关注我们</h3>
+        <img src="{% static 'images/qr_code.jpg' %}">
+    </section>
+    <section class="item links">
+        <img src="{% static 'images/foot_icon_1.png' %}">
+        <img src="{% static 'images/foot_icon_2.png' %}">
+        <img src="{% static 'images/foot_icon_3.png' %}">
+        <img src="{% static 'images/foot_icon_4.png' %}">
+    </section>
+</footer>
+<aside>
+    <ul class="list">
+        <li><img src="{% static 'images/side_icon_1.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_2.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_3.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_4.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_5.png' %}"></li>
+    </ul>
+</aside>
+
+<!-- 引入脚本 -->
+<script src="{% static 'js/data.js' %}"></script>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
+{#<script src="{% static 'js/attractions.js' %}"></script>#}
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

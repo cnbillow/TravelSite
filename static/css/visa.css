@@ -1,0 +1,181 @@
+#content {
+    display: flex;
+    justify-content: space-between;
+}
+.l-ct{
+    width: calc(100% - 255px - 30px);
+    background: #efefef;
+    border: 2px solid white;
+    /* 设置内间距 */
+    box-sizing: border-box;
+    padding: 30px;
+}
+.r-more {
+    width: 255px;
+    border: 2px solid white;
+    background: #efefef;
+}
+
+/* 左侧 */
+.l-ct .ct-box{
+    display:flex;
+    justify-content: space-between;
+}
+.l-ct .ct-box img{
+    width: 210px;
+    height: 140px;
+}
+.l-ct .ct-box .visa-infos{
+    width: calc(100% - 210px - 20px);
+}
+
+.l-ct .title {
+    font: normal 20px "微软雅黑";
+}
+
+.l-ct .price{
+    margin-top: 15px;
+    display: inline-block;
+    font-size: 25px;
+    color: #e04f67;
+    border-top: 4px solid #ddd;
+    padding-top: 10px;
+}
+.l-ct .code{
+    font-size: 13px;
+    color: #aaa;
+    padding: 3px;
+    border-top: 1px dotted #ddd;
+}
+
+.l-ct .handle-box{
+    /* margin:
+    一个值：同时设置四个方向
+    二个值：垂直 水平
+    三个值：上 水平 下
+    四个值：上 右 下 左
+     */
+    margin: 6px 0 30px;
+    text-align: center;
+    line-height: 40px;
+    display: flex;
+}
+
+.l-ct .yd-btn{
+    margin-right: 20px;
+    display: inline-block;
+    width: 146px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+    background: #e04f67;
+    letter-spacing: 2px;
+    border-radius: 5px;
+}
+
+.l-ct form
+{
+    display:flex;
+}
+
+.l-ct form span,
+.l-ct form input{
+    display: block;
+    outline: none;
+    height: 40px;
+    width: 30px;
+    box-sizing: border-box;
+    border: 1px solid #e04f67;
+    text-align: center;
+}
+
+.l-ct form span{
+    cursor: pointer;
+
+}
+.l-ct .tips{
+    font-size: 15px;
+    font-family: "微软雅黑";
+    color: rgb(141, 141, 141);
+}
+
+.l-ct .tab{
+    margin-top: 35px;
+}
+
+.l-ct .tab-menu-list{
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 220px;
+    height: 50px;
+    padding: 20px;
+    text-align: center;
+    padding-top: 10px;
+    cursor: pointer;
+}
+
+.l-ct .tab-menu-list li{
+    border-top: 4px solid #efefef;
+    transition: all 0.25s linear;
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+.l-ct .tab-menu-list .sel{
+    border-top: 4px solid #333333;
+    color: #333333;
+}
+
+.l-ct .tab-menu-list li:hover
+{
+    border-top: 4px solid #999999;
+    color: #333333;
+}
+
+
+.l-ct .dec-ct{
+    font: normal 13px "宋体";
+    color: rgb(105, 105, 105);
+    line-height: 35px;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.l-ct .tab-ct-list li{
+    /* 隐藏元素 */
+    display: none;
+}
+
+.l-ct .tab-ct-list .show{
+    display: block;
+}
+
+/* 右侧 */
+.r-more .top-more{
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: white;
+    background: #e04f67;
+}
+.r-more img{
+    padding: 20px;
+    height: 135px;
+    width: 200px;
+}
+.r-more .img{
+    display: flex;
+    justify-content: center;
+}
+.r-more .information-list{
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+.r-more .information-list p{
+    font: normal 13px "微软雅黑";
+    text-align: center;
+}

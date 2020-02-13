@@ -1,0 +1,200 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ view.name }}</title>
+    <meta name="description" content="">
+    <meta name="author" content="templatemo">
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/templatemo-style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/mystyle.css' %}" rel="stylesheet">
+{#    <link href="{% static 'css/common.css' %}" rel="stylesheet">#}
+{#    <link href="{% static 'css/normalized.css' %}" rel="stylesheet">#}
+{#    <link rel="stylesheet" href="{% static 'css/index.css' %}">#}
+
+
+</head>
+<body class="templatemo-container">
+
+
+
+<!-- header image -->
+<div class="header-img" style="background: url({{ MEDIA_URL }}{{ view.image }}) no-repeat center center;
+        background-size: cover;
+        height: 540px;">
+    <div class="detail-top-box">
+        <!-- logo -->
+        <a href="{% url 'index' %}">
+            <img class="logo" src="{% static 'images/logo.png' %}">
+        </a>
+        <!-- 菜单 -->
+        <ul class="detail-menu-list">
+            <li class="sel"><a href="{% url 'index' %}">首页</a></li>
+            <li><a href="{% url 'attractions' %}">热门景点</a></li>
+            <li><a href="{% url 'travelPackage' %}">旅游套餐</a></li>
+            <li><a href="{% url 'about' %}">关于我们</a></li>
+            {#                    <li><a href="{% url 'feedback' %}">客户反馈</a></li>#}
+            <li><a href="{% url 'contact' %}">联系我们</a></li>
+        </ul>
+        <!-- 登录注册 -->
+        <div class="detail-login-register-box">
+            <section class="item login">
+                <img src="{% static 'images/login.png' %}">
+                登陆
+            </section>
+            <section class="item register">
+                <img src="{% static 'images/register.png' %}">
+                注册
+            </section>
+        </div>
+    </div>
+
+</div>
+<!-- end header image -->
+<!-- Welcome message -->
+<div class="welcome-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="welcome-wrapper">
+                    <h2 class="welcome-title text-uppercase">{{ view.name }}</h2>
+                    <img src="{% static 'images/welcome-divider-lines.png' %}" alt="Welcome divider"
+                         class="welcome-divider-lines-img">
+                    <p class="welcome-description">{{ view.intr }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Welcome message -->
+<!-- main content -->
+<section class="templatemo-container section-shadow-bottom">
+    <div class="container">
+        <div class="row section-title-container">
+            <div class="col-lg-12 text-uppercase text-center">
+                <h2 class="section-title">如此美景</h2>
+                <div class="section-title-underline-blue"></div>
+                <hr class="section-title-underline">
+                <p class="small">Look</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <h3 class="section-title-2 text-uppercase font-weight-300"><b>简单</b> <span
+                        class="blue-text">介绍</span></h3>
+                <p>Credit goes to Unsplash for images used in this template. Morbi dapibus rhoncus nulla ac tempus.
+                    Integer felis lorem, fermentum quis nisl accumsan, gravida gravida est. Cras ultrices rhoncus dui ut
+                    laoreet. Fusce tincidunt, urna a imperdiet tempor, orci dolor dictum elit, sit amet malesuada mauris
+                    magna eget dolor. Morbi ornare convallis vulputate. Donec ut suscipit nisl, ac elementum nisi.</p>
+                <ul class="gray-text ul-1">
+                    <li>Sed non mauris vitae erat consequat auctor</li>
+                    <li>Class aptent taciti sociosqu</li>
+                    <li>Wonubia nostra, per inceptos himeos</li>
+                </ul>
+                <a href="#" class="btn-blue-gradient">优惠套餐</a>
+                <a href="#" class="btn-transparent">其他地方</a>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="carousel-container">
+                    <div class="crsl-items" data-navigation="navbtns">
+                        <div class="crsl-wrap">
+                            {% for pic in view_pics %}
+                                <figure class="crsl-item">
+                                    <img src="{{ MEDIA_URL }}{{ pic.image }}" alt="Image"
+                                         class="img-responsive img-thumbnail">
+                                </figure>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>   <!-- carousel-container -->
+                <div id="navbtns" class="crsl-nav">
+                    <a href="#" class="previous">
+                        <img src="{% static 'images/carousel-arrow-previous.png' %}" alt="previous">
+                    </a>
+                    <a href="#" class="next">
+                        <img src="{% static 'images/carousel-arrow-next.png' %}" alt="next">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- end section content -->
+    </div>
+</section>
+<!-- Who We Are -->
+<section class="templatemo-container light-gray-bg section-shadow-bottom">
+    <div class="container">
+        <div class="row section-title-container">
+            <div class="col-lg-12 text-uppercase text-center">
+                <h2 class="section-title">历史</h2>
+                <div class="section-title-underline-blue"></div>
+                <hr class="section-title-underline">
+                <p class="small">Look</p>
+            </div>
+        </div> <!-- row -->
+        <div class="row">
+            <div class="col-lg-5 col-md-5">
+                <div class="tm-blocks-container effect1">
+                    {#                    <div class="tm-block green-bg">#}
+                    {#                        <a href="#" class="tm-block-link">Technologies</a>#}
+                    {#                    </div>#}
+                    <div class="tm-block">
+                        <img src="{{ MEDIA_URL }}{{ view.image }}" alt="Image" class="img-responsive" style="height: 100%">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-7">
+                <h3 class="section-title-2 text-uppercase font-weight-300"><b>Our</b> <span class="blue-text">Technologies</span>
+                </h3>
+                <p class="justify-text">Sed tempor ante aliquam, finibus diam in, mattis enim. Aliquam neque odio,
+                    aliquam non ullamcorper nec, tempus non libero. Etiam in odio rutrum, euismod massa quis,
+                    ullamcorper diam. Mauris ac lectus mollis, mollis tortor vel, placerat elit. Quisque euismod ut
+                    neque in rutrum. Quisque vitae dignissim elit. Aliquam vel erat ante. Pellentesque luctus efficitur
+                    ultrices. Nam eget odio ultrices, laoreet arcu eu, vehicula ligula. Quisque non nisi finibus,
+                    consequat nulla vitae, accumsan lectus. Morbi vestibulum, massa a gravida commodo, enim nisi
+                    porttitor nulla, ut aliquam turpis urna non sem. Suspendisse id odio ac orci ornare fermentum. Sed
+                    tincidunt id odio vel interdum.</p>
+                <p class="justify-text">
+                    Etiam mollis nisi ut eleifend condimentum. Morbi posuere convallis lacus, a venenatis risus mattis
+                    eget. Vestibulum vitae gravida augue, vitae molestie dui. Duis lobortis nisi eget consequat
+                    tincidunt. Sed vel tortor vitae nisl pharetra dignissim. Sed lorem neque, sagittis eget sem sit
+                    amet, aliquet fringilla tortor. Praesent et aliquet arcu. Nunc tempor vulputate sapien, ut varius
+                    risus blandit at.
+                </p>
+                <p class="justify-text">
+                    Phasellus lobortis nisl ut tortor placerat, vel auctor felis semper. Quisque ut auctor sapien. Proin
+                    gravida arcu malesuada, venenatis nisl vitae, egestas sem. Vestibulum mauris magna, aliquam non
+                    commodo ac, porttitor a augue. Cras laoreet est at magna malesuada, a viverra ipsum luctus. Nullam
+                    sed lacinia magna. Donec ullamcorper lectus et diam porttitor, a tincidunt diam iaculis. Donec
+                    sagittis posuere pellentesque.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog -->
+
+<!-- JS -->
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>      <!-- jQuery -->
+<script type="text/javascript" src="{% static 'js/responsiveCarousel.min.js' %}"></script>      <!-- Carousel -->
+<script type="text/javascript" src="{% static 'js/templatemo-script.js' %}"></script>      <!-- Templatemo Script -->
+<script>
+
+    $(function () {
+        $('.crsl-items').carousel({
+            visible: 1,
+            itemMinWidth: 320,
+            itemEqualHeight: 320,
+            itemMargin: 9,
+        });
+        $(".crsl-nav a[href=#]").on('click', function (e) {
+            e.preventDefault();
+        });
+    });
+
+</script>
+</body>
+</html>

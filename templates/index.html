@@ -1,0 +1,206 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>巴黎旅游</title>
+    <!-- 引入样式 -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/normalized.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/attractions.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<!-- 头部 -->
+<header id="head"
+        style="height:850px;background: url({% static 'images/h_bg.jpg' %}) no-repeat center center; background-size: cover;">
+    <div class="wrapper">
+        <div class="top-box">
+            <!-- logo -->
+            <a href="{% url 'index' %}">
+                <img class="logo" src="{% static 'images/logo.png' %}">
+            </a>
+            <!-- 菜单 -->
+            <ul class="menu-list">
+                <li class="sel"><a href="{% url 'index' %}">首页</a></li>
+                <li><a href="{% url 'attractions' %}">热门景点</a></li>
+                <li><a href="{% url 'travelPackage' %}">旅游套餐</a></li>
+                <li><a href="{% url 'about' %}">关于我们</a></li>
+                {#                    <li><a href="{% url 'feedback' %}">客户反馈</a></li>#}
+                <li><a href="{% url 'contact' %}">联系我们</a></li>
+            </ul>
+            <!-- 登录注册 -->
+            <div class="login-register-box">
+                <section class="item login">
+                    <img src="{% static 'images/login.png' %}">
+                    登陆
+                </section>
+                <section class="item register">
+                    <img src="{% static 'images/register.png' %}">
+                    注册
+                </section>
+            </div>
+        </div>
+        <div class="infos">
+            <img src="{% static 'images/tower.png' %}">
+            <h1>热 门 景 点 推 荐</h1>
+            <p>Recommended Attractions</p>
+            <!-- 点此查看热门景点列表 -->
+            <span class="btn">
+                <a id="ckxq" href="{% url 'attractions' %}">查看详情</a>
+            </span>
+            {#            <span class="btn" href="{% url 'attractions' %}">查看详情</span>#}
+            <img class="down" src="{% static 'images/down.png' %}">
+        </div>
+    </div>
+</header>
+<!-- 内容 -->
+<main id="content">
+    <!-- 介绍 -->
+    <div class="introduce">
+        <img src="{% static 'images/h_link.png' %}">
+        <div class="infos">
+            <h1 class="chart_title">
+                这里有<span>更多资讯</span>~
+            </h1>
+            <p class="desc">
+                如果您正在寻找个性化、高品质、由资深专业导游私人陪同的巴黎游或从巴黎出发的游览路线，那么我们一定是您正确的选择。
+                巴黎旅行社自1988年创建以来，借助资深优质的专业导游团队和豪华车队，法国艺程一直致力于为全球各地追求卓越品质的游客提供最优质的旅行体验。
+            </p>
+            <a href="{% static 'pages/about.html' %}">VIEW MORE</a>
+        </div>
+    </div>
+    <!-- 横幅 -->
+    <div class="banner">
+        <div class="mask">
+            <h1 class="title" style="color: #ffffff">
+                为您开启一段愉快的旅程
+            </h1>
+            <h3 class="sub-title">
+                CITY TOURS / TOUR TICKETS / TOUR GUIDES
+            </h3>
+        </div>
+    </div>
+    <!-- 热门景点 -->
+    <div class="process">
+        <header>
+            <h1 class="title">
+                热门景点
+            </h1>
+            <h3 class="sub-title">
+                CITY TOURS / TOUR TICKETS / TOUR GUIDES
+            </h3>
+
+            <div class="display">
+                <!-- 景点列表 -->
+                <ul class="attractions-list">
+
+                    {% for view in all_view %}
+                        <li>
+                            <img src="{{ MEDIA_URL }}{{ view.image }}">
+                            <p class="name">{{ view.name }}</p>
+                            <p class="rating">{{ view.score }}</p>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </header>
+        <hr class="line">
+    </div>
+
+    <!-- 旅游套餐 -->
+    <div class="process-botton">
+        <div class="col-mid">
+            <h1 class="title">优惠套餐</h1>
+            <h3 class="sub-title">
+                CITY TOURS / TOUR TICKETS / TOUR GUIDES
+            </h3>
+        </div>
+        <div class="content-middle1">
+            {% for pk in packages %}
+                <div class="col-md-4 content-middle2">
+                    <a href="single.html"><img src="{{ MEDIA_URL }}{{ pk.image }}" class="img-responsive" alt=""></a>
+                    <div class="content-middle3">
+                        <h4><a href="single.html">{{ pk.name }}</a></h4>
+                        <label></label>
+                        <p>{{ pk.intr }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+
+    <!-- 地理位置 -->
+    <div class="col-mid">
+        <h1 class="title">地理位置</h1>
+        <h3 class="sub-title">
+            CITY TOURS / TOUR TICKETS / TOUR GUIDES
+        </h3>
+    </div>
+    <div class="wel-grids">
+        {% for location in locations %}
+            <div class="col-md-3 wel-grid">
+                <img src="{{ MEDIA_URL }}{{ location.image }}" class="img-responsive gray" alt="">
+                <h4>{{ location.name }}</h4>
+                <p>{{ location.intr }}</p>
+            </div>
+        {% endfor %}
+
+        <div class="clearfix"></div>
+    </div>
+
+</main>
+<!-- 尾部 -->
+<footer id="foot">
+    <section class="item contact">
+        <h1>联系我们</h1>
+        <p>/contact</p>
+    </section>
+    <section class="item service">
+        <h3>巴黎旅游定制服务</h3>
+        <ul class="info-list">
+            <li>电话：400-888-8888</li>
+            <li>手机：152-2888-5771</li>
+            <li>邮编：610000</li>
+            <li>传真：000-66668888</li>
+            <li>邮箱：lihy_online@163.com</li>
+            <li>地址：四川省成都市高新区天府软件园B区5座1层</li>
+        </ul>
+    </section>
+    <section class="item focus">
+        <h3>关注我们</h3>
+        <img src="{% static 'images/qr_code.jpg' %}">
+    </section>
+    <section class="item links">
+        <img src="{% static 'images/foot_icon_1.png' %}">
+        <img src="{% static 'images/foot_icon_2.png' %}">
+        <img src="{% static 'images/foot_icon_3.png' %}">
+        <img src="{% static 'images/foot_icon_4.png' %}">
+    </section>
+</footer>
+<aside>
+    <ul class="list">
+        <li><img src="{% static 'images/side_icon_1.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_2.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_3.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_4.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_5.png' %}"></li>
+    </ul>
+</aside>
+
+
+</body>
+</html>

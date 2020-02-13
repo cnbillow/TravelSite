@@ -1,0 +1,113 @@
+#content {
+    display: flex;
+    justify-content: space-between;
+}
+.l-tj{
+    width: 100%;
+    background: #efefef;
+    border: 2px solid white;
+    /* 设置内间距 */
+    box-sizing: border-box;
+    padding: 30px;
+}
+.r-yd {
+    padding:30px 30px;
+    width: 255px;
+    border: 2px solid white;
+    background: #efefef;
+}
+
+.r-yd .item .tips span{
+    color: red;
+    font-size: 10px;
+}
+
+
+.r-yd form{
+    margin-top: 40px;
+}
+
+.r-yd .item input,
+.r-yd .item select{
+    border:1px solid lightgray;
+    height: 35px;
+    font-size: 14px;
+    width:240px;
+    outline: none;
+    color: rgb(102, 102, 102);
+    box-sizing: border-box;
+    padding-left: 8px;
+}
+
+.r-yd .item textarea{
+    border:1px solid lightgray;
+    height: 70px;
+    font-size: 14px;
+    width:240px;
+    outline: none;
+    resize: vertical;
+}
+
+.r-yd .item .tips {
+    padding: 10px 0;
+    font: normal 14px "微软雅黑";
+    color: rgb(102, 102, 102);
+    letter-spacing: 1px;
+}
+
+/* 左侧推荐 */
+.l-tj > .title,
+.r-yd > .title {
+    font-size: 20px;
+    /* 设置字体粗细 */
+    font-weight: normal;
+    border-left: 4px solid #e04f67;
+    padding-left: 15px;
+}
+.l-tj .title span, .r-yd .title span{
+    font-size: 14px;
+    color: #a9a9a9;
+}
+
+.tj-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.tj-list li {
+    width: 31%;
+    margin-top: 6%;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+.tj-list .img {
+    width: 100%;
+    /* 溢出不显示 */
+    overflow: hidden;
+}
+
+.tj-list img {
+    width: 100%;
+    transition: all .5s linear;
+}
+
+.tj-list li:hover img {
+    transform: scale(1.2);
+}
+
+.submit-btn{
+    margin-top: 30px;
+    background: #e04f67;
+    width: 132px;
+    height: 32px;
+    color: #fff;
+    text-align: center;
+    line-height: 32px;
+    cursor: pointer;
+    transition: all 0.25s linear;
+    font-weight: bold;
+}
+.submit-btn:hover{
+    background: rgb(190, 36, 36);
+}

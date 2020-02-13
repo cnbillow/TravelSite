@@ -1,0 +1,223 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>旅游套餐</title>
+    <link rel="stylesheet" href="{% static 'css/normalized.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/set-meal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+</head>
+<body>
+<!-- 头部 -->
+<header id="head"
+        style="height:400px;background: url('{% static 'images/set_meal_bg.jpg' %}') no-repeat left top; background-size: cover;">
+    <div class="wrapper">
+        <div class="top-box">
+            <!-- logo -->
+            <img class="logo" src="{% static 'images/logo.png' %}">
+            <!-- 菜单 -->
+            <ul class="menu-list">
+                <li><a href="{% url 'index' %}">首页</a></li>
+                <li><a href="{% url 'attractions' %}">热门景点</a></li>
+                <li class="sel"><a href="{% url 'travelPackage' %}">旅游套餐</a></li>
+                <li><a href="{% url 'about' %}">关于我们</a></li>
+                {#                <li><a href="{% url 'feedback' %}">客户反馈</a></li>#}
+                <li><a href="{% url 'contact' %}">联系我们</a></li>
+            </ul>
+            <!-- 登录注册 -->
+            <div class="login-register-box">
+                <section class="item login">
+                    <img src="{% static 'images/login.png' %}">
+                    登陆
+                </section>
+                <section class="item register">
+                    <img src="{% static 'images/register.png' %}">
+                    注册
+                </section>
+            </div>
+        </div>
+        <div class="infos" style="margin-top:75px;">
+            <h1 style="font: lighter normal 36px '微软雅黑';">- 旅游套餐 -</h1>
+            <p>CITY TOURS / TOUR TICKETS / TOUR GUIDES</p>
+        </div>
+    </div>
+</header>
+<!-- 内容 -->
+<main id="content">
+    <!-- 左侧套餐推荐 -->
+    <div class="l-tj">
+        <!-- 标题 -->
+        <h1 class="title">
+            旅游套餐推荐
+            <span> / package</span>
+        </h1>
+        <!-- 套餐推荐列表 -->
+        <ul class="tj-list">
+            {% for pk in all_package.object_list %}
+                <li>
+                    <div class="img">
+                        <img src="{{ MEDIA_URL }}{{ pk.image }}">
+                    </div>
+                    <p class="title">{{ pk.name }}</p>
+                </li>
+            {% endfor %}
+
+        </ul>
+
+        <nav aria-label="Page navigation" id="page_nav">
+            <ul class="pagination pagination-lg">
+
+                {% if all_package.has_previous %}
+                    <li>
+                        <a href="?{{ all_package.previous_page_number.querystring }}" aria-label="Previous">
+                            <span aria-hidden="true">上一页</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% for page in all_package.pages %}
+                    {% if page %}
+                        {% ifequal page page_obj.number %}
+                            <li><a href="#"><span class="current page">{{ page }}</span></a></li>
+                        {% else %}
+                            <a href="?{{ page.querystring }}" class="page">{{ page }}</a>
+                        {% endifequal %}
+                    {% else %}
+                        ...
+                    {% endif %}
+                {% endfor %}
+
+
+                {% if all_package.has_next %}
+                    <li>
+                        <a href="?{{ all_package.next_page_number.querystring }}" aria-label="Next">
+                            <span aria-hidden="true">下一页</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+
+            </ul>
+        </nav>
+
+    </div>
+
+
+    <!-- 右侧搜索 -->
+    {#    <div class="r-yd">#}
+    {#        <h1 class="title">#}
+    {#            搜索一下#}
+    {#            <span> / order online</span>#}
+    {#        </h1>#}
+    {#        <form action="javascript:;">#}
+    {#            <section class="item">#}
+    {#                <p class="tips">#}
+    {#                    您的姓名#}
+    {#                    <span> *</span>#}
+    {#                </p>#}
+    {#                <label>#}
+    {#                    <input type="text" class="name">#}
+    {#                </label>#}
+    {#            </section>#}
+    {#            <section class="item">#}
+    {#                <p class="tips">#}
+    {#                    您的电话#}
+    {#                    <span> *</span>#}
+    {#                </p>#}
+    {#                <label>#}
+    {#                    <input type="tel" class="name">#}
+    {#                </label>#}
+    {#            </section>#}
+    {#            <section class="item">#}
+    {#                <p class="tips">#}
+    {#                    目的地#}
+    {#                    <span> *</span>#}
+    {#                </p>#}
+    {#                <label>#}
+    {#                    <select name="address">#}
+    {#                        <option value="卢浮宫">卢浮宫</option>#}
+    {#                        <option value="蓬皮杜中心">蓬皮杜中心</option>#}
+    {#                        <option value="塞纳河">塞纳河</option>#}
+    {#                        <option value="巴黎圣母院">巴黎圣母院</option>#}
+    {#                        <option value="凯旋门">凯旋门</option>#}
+    {#                        <option value="圣心大教堂">圣心大教堂</option>#}
+    {#                        <option value="凡尔赛宫">凡尔赛宫</option>#}
+    {#                        <option value="埃菲尔铁塔">埃菲尔铁塔</option>#}
+    {#                        <option value="奥赛博物馆">奥赛博物馆</option>#}
+    {#                    </select>#}
+    {#                </label>#}
+    {#            </section>#}
+    {#            <section class="item">#}
+    {#                <p class="tips">成人（18周岁以上）</p>#}
+    {#                <label>#}
+    {#                    <input type="number" class="name" min="1" max="10">#}
+    {#                </label>#}
+    {#            </section>#}
+    {#            <section class="item">#}
+    {#                <p class="tips">儿童（18周岁以下）</p>#}
+    {#                <label>#}
+    {#                    <input type="number" class="name" min="1" max="10">#}
+    {#                </label>#}
+    {#            </section>#}
+    {#            <section class="item">#}
+    {#                <p class="tips">备注：</p>#}
+    {#                <label>#}
+    {#                    <textarea name="remark"></textarea>#}
+    {#                </label>#}
+    {#            </section>#}
+    {#            <div class="submit-btn">提交</div>#}
+    {#        </form>#}
+    {#    </div>#}
+</main>
+
+<!-- 尾部 -->
+<footer id="foot">
+    <section class="item contact">
+        <h1>联系我们</h1>
+        <p>/contact</p>
+    </section>
+    <section class="item service">
+        <h3>巴黎旅游定制服务</h3>
+        <ul class="info-list">
+            <li>电话：400-888-8888</li>
+            <li>手机：152-2888-5771</li>
+            <li>邮编：610000</li>
+            <li>传真：000-66668888</li>
+            <li>邮箱：lihy_online@163.com</li>
+            <li>地址：四川省成都市高新区天府软件园B区5座1层</li>
+        </ul>
+    </section>
+    <section class="item focus">
+        <h3>关注我们</h3>
+        <img src="{% static 'images/qr_code.jpg' %}">
+    </section>
+    <section class="item links">
+        <img src="{% static 'images/foot_icon_1.png' %}">
+        <img src="{% static 'images/foot_icon_2.png' %}">
+        <img src="{% static 'images/foot_icon_3.png' %}">
+        <img src="{% static 'images/foot_icon_4.png' %}">
+    </section>
+</footer>
+<aside>
+    <ul class="list">
+        <li><img src="{% static 'images/side_icon_1.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_2.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_3.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_4.png' %}"></li>
+        <li><img src="{% static 'images/side_icon_5.png' %}"></li>
+    </ul>
+</aside>
+
+<!-- 引入脚本 -->
+<script src="{% static 'js/data.js' %}"></script>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
+{#<script src="{% static 'js/set-meal.js' %}"></script>#}
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
