@@ -34,3 +34,8 @@ python manage.py runserver
 
 ### 本地效果演示
 
+![image](https://github.com/wangpeixian/TravelSite/blob/master/images/1173_0.jpg)
+
+![image](https://github.com/wangpeixian/TravelSite/blob/master/images/1175_0.jpg)
+
+![image](https://github.com/wangpeixian/TravelSite/blob/master/images/1177_0.jpg)
